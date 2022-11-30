@@ -1,0 +1,26 @@
+{
+    "name": "extas/bot",
+    "bots": [
+        {
+            "name": "bot-test",
+            "token": "your-token",
+            "class": "extas\\components\\bots\\dispatchers\\DispatcherApi",
+            "title": "My test bot",
+            "description": "This is bot for tests",
+            "platform": "api"
+        }
+    ],
+    "scenarios": [
+        {
+            "name": "test",
+            "class": "extas\\components\\bots\\scenarios\\schemas\\SchemaApi"
+        }
+    ],
+    "steps": [
+        {
+            "name": "help",
+            "description": "Test step. Return bot description",
+            "class": "\\extas\\components\\bots\\scenarios\\steps\\StepBotInfo"
+        }
+    ]
+}

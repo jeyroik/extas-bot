@@ -1,0 +1,52 @@
+{
+    "name": "extas/bot",
+    "tables": {
+        "bots": {
+            "namespace": "repositories",
+            "item_class": "\\extas\\components\\bots\\Bot",
+            "pk": "id",
+            "code": {
+                "create-before": "\\extas\\components\\UUID::setId($item);"
+            }
+        },
+        "scenarios": {
+            "namespace": "repositories",
+            "item_class": "\\extas\\components\\bots\\scenarios\\Scenario",
+            "pk": "id",
+            "code": {
+                "create-before": "\\extas\\components\\UUID::setId($item);"
+            }
+        },
+        "steps": {
+            "namespace": "repositories",
+            "item_class": "\\extas\\components\\bots\\steps\\Step",
+            "pk": "id",
+            "code": {
+                "create-before": "\\extas\\components\\UUID::setId($item);"
+            }
+        }
+    },
+    "extensions": [
+        {
+            "class": "\\extas\\components\\extensions\\bots\\ExtensionScenario",
+            "inteface": "\\extas\\interfaces\\extensions\\bots\\IExtensionScenario",
+            "subject": "extas.bot.dispatcher.api",
+            "methods": ["getScenarioName", "getStepName"]
+        }
+    ],
+    "plugins": [
+        {
+            "class": "\\extas\\components\\plugins\\bots\\PluginScenarioByName",
+            "stage": "extas.bot.scenario.api"
+        }
+    ],
+    "routes": [
+        {
+            "name": "/bot/v1",
+            "title": "Bot API v1",
+            "description": "Endpoint for getting commands/requests for all bots all platforms",
+            "method": "post",
+            "class": "\\extas\\components\\routes\\RouteBot"
+        }
+    ]
+}
